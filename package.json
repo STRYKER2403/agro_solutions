@@ -1,0 +1,45 @@
+{
+  "name": "codeswear",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/cache": "11.6.0",
+    "@emotion/react": "11.7.0",
+    "@emotion/server": "11.4.0",
+    "@emotion/styled": "11.6.0",
+    "@mui/lab": "^5.0.0-alpha.108",
+    "@mui/material": "^5.10.14",
+    "apexcharts": "^3.23.1",
+    "clsx": "1.1.1",
+    "crypto-js": "^4.1.1",
+    "feather-icons-react": "^0.5.0",
+    "googleapis": "^109.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.0",
+    "next": "12.3.1",
+    "nodejs-nodemailer-outlook": "^1.2.4",
+    "nodemailer": "^6.8.0",
+    "paytmchecksum": "^1.5.0",
+    "react": "18.2.0",
+    "react-apexcharts": "^1.4.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.6.0",
+    "react-toastify": "^9.0.8",
+    "react-top-loading-bar": "^2.3.1",
+    "xoauth2": "^1.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.12",
+    "eslint": "^8.25.0",
+    "eslint-config-next": "12.3.1",
+    "eslint-plugin-react": "^7.31.10",
+    "postcss": "^8.4.18",
+    "tailwindcss": "^3.1.8"
+  }
+}
