@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import bg1 from '../public/bg1.png'
+
 
 export default function Home() {
   return (
@@ -12,16 +12,22 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-      
+        <section className="text-gray-600 body-font ">
+          
+            <div className="flex bg-back bg-no-repeat bg-cover bg-center bg-fixed h-[65vh] opacity-90 text-center items-center justify-center flex-col">
+              <div className='text-6xl text-green-900 font-semibold font-serif'>AGRO SOLUTIONS</div>
+              <div className='text-4xl mb-28 text-green-700 font-semibold font-serif'>Adding Green To Life</div>
+              </div>
+        </section>
         
         <section className="text-gray-600 body-font">
-        <div className="bg-cover bg-center " style={{backgroundImage: `url(${bg1.src})`,width: '100%',height: '100%',}}></div>
-        {/* <img src="/bg1.png" alt="Bg" /> */}
+        
+        
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
               <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Get Work Done With Agro Solutions</h1>
               
-              <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">Adding Green To Life</p>
+              <p className="lg:w-1/2 w-full leading-relaxed text-gray-500 text-xl">Adding Green To Life</p>
             </div>
             <div className="flex flex-wrap -m-4">
               <div className="xl:w-1/3 md:w-1/2 p-4">

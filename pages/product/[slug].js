@@ -6,23 +6,14 @@ import 'react-toastify/dist/ReactToastify.css';
 const mongoose = require("mongoose");
 import Error from 'next/error'
 
-const Slug = ({ buyNow, addToCart, product, variants,error}) => {
-  // console.log(product, variants)
+const Slug = ({ buyNow, addToCart, product, error}) => {
+  
   const router = useRouter()
   const { slug } = router.query
-
+  
   const [pin, setpin] = useState();
   const [service, setservice] = useState();
 
-  const [color, setcolor] = useState();
-  const [size, setsize] = useState();
-
-  useEffect(() => {
-    if(!error){
-    setcolor(product.color)
-    setsize(product.size)
-    }
-  }, [router.query]);
 
   const checkServiceability = async () => { 
     let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`)
@@ -60,12 +51,6 @@ const Slug = ({ buyNow, addToCart, product, variants,error}) => {
   }
 
 
-
-  const refreshVariant = (newsize, newcolor) => {
-    let url = `${process.env.NEXT_PUBLIC_HOST}/product/${variants[newcolor][newsize]['slug']}`
-    router.push(url);
-  }
-
   if (error == 404) {
     return <Error statusCode={error} />
   }
@@ -89,7 +74,7 @@ const Slug = ({ buyNow, addToCart, product, variants,error}) => {
           <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto px-16 object-cover object-top rounded shadow-md" src={product.img} />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">AGRO SOLUTIONS</h2>
-            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product.title} ({product.size}/{product.color})</h1>
+            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product.title} </h1>
             <div className="flex mb-4">
 
 
@@ -131,40 +116,13 @@ const Slug = ({ buyNow, addToCart, product, variants,error}) => {
 
 
             </div>
-            <p className="leading-relaxed">{product.desc}</p>
-            <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-              <div className="flex">
-                <span className="mr-3">Color</span>
-                {/* Object.keys(variants['Red']).includes(size)? " ":"disabled" */}
-                {Object.keys(variants).includes('Red') && Object.keys(variants['Red']).includes(size) && <button onClick={() => { refreshVariant(size, 'Red') }} className={`border-2 bg-red-700 rounded-full w-6 h-6 focus:outline-none ${color === 'Red' ? "border-black" : "border-gray-300"}`}></button>}
-                {Object.keys(variants).includes('Blue') && Object.keys(variants['Blue']).includes(size) && <button onClick={() => { refreshVariant(size, 'Blue') }} className={`border-2 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none ${color === 'Blue' ? "border-black" : "border-gray-300"}`}></button>}
-                {Object.keys(variants).includes('Yellow') && Object.keys(variants['Yellow']).includes(size) && <button onClick={() => { refreshVariant(size, 'Yellow') }} className={`border-2 ml-1 bg-yellow-500 rounded-full w-6 h-6 focus:outline-none ${color === 'Yellow' ? "border-black" : "border-gray-300"}`}></button>}
-                {Object.keys(variants).includes('Green') && Object.keys(variants['Green']).includes(size) && <button onClick={() => { refreshVariant(size, 'Green') }} className={`border-2 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none ${color === 'Green' ? "border-black" : "border-gray-300"}`}></button>}
-              </div>
-              <div className="flex ml-6 items-center">
-                <span className="mr-3">Size</span>
-                <div className="relative">
-                  <select value={size} onChange={(e) => { refreshVariant(e.target.value, color) }} className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-green-200 focus:border-green-500 text-base pl-3 pr-10">
-                    {/* {Object.keys(variants).map((item)=>{return Object.keys(variants[item]).includes('S') && <option value={"S"}>S</option>})} */}
-                    {color && Object.keys(variants[color]).includes("S") && <option value={"S"}>S</option>}
-                    {color && Object.keys(variants[color]).includes("M") && <option value={"M"}>M</option>}
-                    {color && Object.keys(variants[color]).includes("L") && <option value={"L"}>L</option>}
-                    {color && Object.keys(variants[color]).includes("XL") && <option value={"XL"}>XL</option>}
-                    {color && Object.keys(variants[color]).includes("XXL") && <option value={"XXL"}>XXL</option>}
-                  </select>
-                  <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
-                      <path d="M6 9l6 6 6-6"></path>
-                    </svg>
-                  </span>
-                </div>
-              </div>
-            </div>
+            <p className="leading-relaxed my-4">{product.desc}</p>
+           
             <div className="flex ">
               {product.availableQty<=0 && <span className="title-font font-medium text-2xl text-gray-900">Out Of Stock!</span>}
               {product.availableQty>0 && <span className="title-font font-medium text-2xl text-gray-900">₹{product.price}</span>}
-              <button disabled={product.availableQty<=0} onClick={() => { buyNow(slug, 1, product.price, product.title, size, color) }} className="disabled:bg-green-300 flex ml-3 md:ml-6 text-white bg-green-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-green-600 rounded">Buy Now</button>
-              <button disabled={product.availableQty<=0} onClick={() => { addToCart(slug, 1, product.price, product.title, size, color) }} className="disabled:bg-green-300 flex ml-4 text-white bg-green-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-green-600 rounded">Add to Cart</button>
+              <button disabled={product.availableQty<=0} onClick={() => { buyNow(slug, 1, product.price, product.title) }} className="disabled:bg-green-300 flex ml-3 md:ml-6 text-white bg-green-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-green-600 rounded">Buy Now</button>
+              <button disabled={product.availableQty<=0} onClick={() => { addToCart(slug, 1, product.price, product.title) }} className="disabled:bg-green-300 flex ml-4 text-white bg-green-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-green-600 rounded">Add to Cart</button>
 
 
               {/* <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
@@ -216,27 +174,13 @@ export async function getServerSideProps(context) {
       props: {error:404}
     }
   }
-  let variants = await Product.find({ title: product.title, category: product.category})
-
-  let colorSizeSlug = {}  // {red:{XL:{slug:'wear-the-code'}}}
-
-  for (let item of variants) {
-    if (Object.keys(colorSizeSlug).includes(item.color)) {
-      colorSizeSlug[item.color][item.size] = { slug: item.slug }
-    }
-    else {
-      colorSizeSlug[item.color] = {}
-      colorSizeSlug[item.color][item.size] = { slug: item.slug }
-    }
-  }
-
 
   return {
     // fetch way
     // props: {products:JSON.parse(products)}, // will be passed to the page component as props
 
     // Direct logic
-    props: {error:error, product: JSON.parse(JSON.stringify(product)), variants: JSON.parse(JSON.stringify(colorSizeSlug)) }
+    props: {error:error, product: JSON.parse(JSON.stringify(product))}
   }
 }
 

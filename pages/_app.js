@@ -19,18 +19,18 @@ function MyApp({ Component, pageProps }) {
   const categoryselect = (num) =>{
     if(num == 1)
     {
-      // category = "tshirts"
-      setcategory("tshirts")
+      
+      setcategory("Seeds")
     }
     else if(num == 2)
     {
-      // category = "hoodies"
-      setcategory("hoodies")
+      
+      setcategory("Fertilisers")
     }
     else
     {
-      // category = "stickers"
-      setcategory("stickers")
+      
+      setcategory("Tools")
     }
   }
 
@@ -77,7 +77,7 @@ function MyApp({ Component, pageProps }) {
       setsubTotal(subt); 
   }
 
-  const addToCart = (ItemCode, qty, price, name, size, variant) => {
+  const addToCart = (ItemCode, qty, price, name) => {
     if(Object.keys(cart).length == 0)
     {
       setkey(Math.random())
@@ -87,14 +87,14 @@ function MyApp({ Component, pageProps }) {
       newCart[ItemCode].qty = cart[ItemCode].qty + qty
     }
     else {
-      newCart[ItemCode] = { qty: 1, price, name, size, variant }
+      newCart[ItemCode] = { qty: 1, price, name}
     }
 
     setcart(newCart)
     saveCart(newCart);
   }
 
-  const removeFromCart = (ItemCode, qty, price, name, size, variant) => {
+  const removeFromCart = (ItemCode, qty) => {
     let newCart = cart;
     if (ItemCode in cart) {
       newCart[ItemCode].qty = cart[ItemCode].qty - qty
@@ -112,9 +112,9 @@ function MyApp({ Component, pageProps }) {
     saveCart({})
   }
 
-  const buyNow = (ItemCode, qty, price, name, size, variant) =>{
+  const buyNow = (ItemCode, qty, price, name) =>{
     let newCart = {};
-    newCart[ItemCode] = { qty: 1, price, name, size, variant };
+    newCart[ItemCode] = { qty: 1, price, name};
 
     setcart(newCart)
     saveCart(newCart);

@@ -1,46 +1,39 @@
-import Link from 'next/link'
-import React from 'react'
-import Product from '../models/Product';
-const mongoose = require("mongoose");
+import Link from 'next/link';
+import React, { useEffect } from 'react'
 
-const articles = ({ products }) => {
+
+const articles = ({articles}) => {
+  useEffect(() => {
+    
+  console.log(articles)
+  }, []);
   return (
-    <div>
-      <section className="text-gray-600 body-font min-h-screen">
+    <div className='mx-8'>
+      <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap justify-center">
-            {Object.keys(products).length === 0 && <p>Sorry! All The Hoodies are Currently Out Of Stock!! New stock Coming soon. Stay Tuned!</p>}
-            {Object.keys(products).map((item) => {
+          <div className="-my-8 divide-y-2 divide-gray-100">
+            
+            {articles.all_Images.map((item,index) => {
+              return <div key={item} className="py-8 flex flex-wrap md:flex-nowrap my-8 bg-gray-900 rounded-3xl">
+              <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+              
+                <img src={item} className='w-52 h-32 ml-6'></img>
+                <span className="mt-2 text-sm ml-6 text-green-500">{articles.all_time[index]}</span>
+                {/* <span className="font-semibold title-font text-white ml-6 mt-2">CATEGORY</span> */}
+                
+              </div>
+              <div className="md:flex-grow">
+                <h2 className="text-2xl font-medium text-white title-font mb-4">{articles.titles[index]}</h2>
+                <p className="leading-relaxed text-gray-300 pr-10">{articles.all_desc[index]}</p>
+                <Link href={articles.all_links[index]}><a className="text-green-500 flex flex-row-reverse items-center mt-4 mr-12"><button className='disabled:bg-green-300 flex mr-2 text-gray-900 bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-600 rounded text-sm font-semibold'>Read More</button>
+                  {/* <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg> */}
+                </a></Link>
+              </div>
+            </div>})}
 
-              return <Link passHref={true} key={products[item]._id} href={`/product/${products[item].slug}`}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-                <a className="block relative rounded overflow-hidden">
-                  <img alt="ecommerce" className="m-auto h-[36vh] block" src={products[item].img} />
-                  {/* in image diff */}
-                  {/* md:mx-0 h-[30vh] md:h-[36vh] */}
-                </a>
-                <div className="mt-4 text-center ">
-                  <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
-                  <h2 className="text-gray-900 title-font text-lg font-medium">{products[item].title}</h2>
-                  <p className="mt-1">₹{products[item].price}</p>
-                  <div className="mt-1">
-                    {products[item].size.includes('S') && <span className='border border-gray-300 px-1 mx-1'> S </span>}   
-                    {products[item].size.includes('M') && <span className='border border-gray-300 px-1 mx-1'> M </span>} 
-                    {products[item].size.includes('L') && <span className='border border-gray-300 px-1 mx-1'> L </span>}  
-                    {products[item].size.includes('XL') && <span className='border border-gray-300 px-1 mx-1'> XL </span>}  
-                    {products[item].size.includes('XXL') && <span className='border border-gray-300 px-1 mx-1'> XXL </span>} 
-                  </div>
-                  
-                  <div className="mt-1">
-                    {products[item].color.includes('Red') &&<button className="border-2 border-gray-300 ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none"></button>}
-                    {products[item].color.includes('Blue') &&<button className="border-2 border-gray-300 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none"></button>}
-                    {products[item].color.includes('Yellow') &&<button className="border-2 border-gray-300 ml-1 bg-yellow-700 rounded-full w-6 h-6 focus:outline-none"></button>}
-                    {products[item].color.includes('Green') &&<button className="border-2 border-gray-300 ml-1 bg-green-700 rounded-full w-6 h-6 focus:outline-none"></button>}
-                    
-                  </div>
-
-                </div>
-              </div></Link>
-            })}
           </div>
         </div>
       </section>
@@ -48,58 +41,15 @@ const articles = ({ products }) => {
   )
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
 
-  // Do it this way with fetch or directly write logic which is recommended in documentation
-  // let res = await fetch("http://localhost:3000/api/getproducts")
-  // let products = await res.text()
-
-  // Direct logic
-  if (!mongoose.connections[0].readyState) {
-    await mongoose.connect(process.env.MONGO_URI);
-  }
-  
-  let allproducts = await Product.find({category:"hoodies"})
-
-  let hoodies = {}
-
-    for (let item of allproducts)
-    {
-        if(item.title in hoodies)
-        {
-            if(!hoodies[item.title].color.includes(item.color) && item.availableQty > 0)
-            {
-                hoodies[item.title].color.push(item.color);   
-            }
-
-            if(!hoodies[item.title].size.includes(item.size) && item.availableQty > 0)
-            {
-                hoodies[item.title].size.push(item.size);   
-            }
-        }
-        else
-        {
-            hoodies[item.title] = JSON.parse(JSON.stringify(item));
-
-            if(item.availableQty > 0)
-            {
-                hoodies[item.title].color = [item.color];
-                hoodies[item.title].size = [item.size];
-            }
-            else{
-              hoodies[item.title].color = [];
-              hoodies[item.title].size = [];
-            }
-        }
-    }
+  let res = await fetch("http://localhost:3001/articles")
+  let articles = await res.text()
 
   return {
-    // fetch way
-    // props: {products:JSON.parse(products)}, // will be passed to the page component as props
-
-    // Direct logic
-    props: { products: JSON.parse(JSON.stringify(hoodies))}
+    props: {articles:JSON.parse(articles)},
   }
 }
 
 export default articles
+

@@ -69,8 +69,8 @@ const handler = async (req, res) => {
                     const transporter = nodemailer.createTransport({
                         host: 'smtp-mail.outlook.com',
                         auth: {
-                            user: "test200224@outlook.com",
-                            pass: "lePA@#123"
+                            user: process.env.OUTLOOK_MAIL,
+                            pass: process.env.OUTLOOK_PASSWORD
                         }
                     })
 

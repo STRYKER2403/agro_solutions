@@ -1,12 +1,13 @@
 {
-  "name": "codeswear",
+  "name": "agrosolutons",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "both": "concurrently \"py agro.py\" \"yarn dev\""
   },
   "dependencies": {
     "@emotion/cache": "11.6.0",
@@ -17,6 +18,7 @@
     "@mui/material": "^5.10.14",
     "apexcharts": "^3.23.1",
     "clsx": "1.1.1",
+    "concurrently": "^7.6.0",
     "crypto-js": "^4.1.1",
     "feather-icons-react": "^0.5.0",
     "googleapis": "^109.0.1",

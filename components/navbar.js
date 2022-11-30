@@ -27,12 +27,6 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     
   }, []);
 
-  // useEffect(() => {
-    
-  
-  //   console.log(category)
-  // }, [category]);
-
   const toggleCart = () => {
 
     setsidebar(!sidebar)
@@ -60,26 +54,16 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
           <Link href={"/"}><a><Image src='/logo1.png' alt='lg' width={175} height={55} /></a></Link>
         </div>
 
-        {/* <div className='nav md:mb-0 mb-1.5'>
-        <ul className='flex space-x-2 font-bold md:text-lg '>
-          <Link href={"/products"}><a><li className='hover:text-green-700 md:mr-8'>Products</li></a></Link>
-          <Link href={"/articles"}><a><li className='hover:text-green-700 md:mr-8'>Articles</li></a></Link>
-          <Link href={"/learn"}><a><li className='hover:text-green-700 md:mr-8'>Learn</li></a></Link>
-          <Link href={"/contactus"}><a><li className='hover:text-green-700 md:mr-8'>Contact Us</li></a></Link>
-        </ul>
-      </div>
-      <div  className="flex cursor-pointer cart absolute right-0 top-3.5 md:top-5 mx-5 items-center"> */}
-
 
         <div className='nav md:mb-0 mb-1.5'>
           <ul className='flex space-x-2 font-bold md:text-lg '>
             
-            {!sidebar && <span onMouseOver={() => setdropdown1(true)} onMouseLeave={() => setdropdown1(false)} className='fixed md:top-5 md:ml-0 top-14.5 ml-7 z-30 cursor-pointer'>
+            { <span onMouseOver={() => setdropdown1(true)} onMouseLeave={() => setdropdown1(false)} className='fixed md:top-5 md:ml-0 top-14.5 ml-7 z-30 cursor-pointer'>
               {dropdown1 && <div className='absolute  bg-white shadow-lg border md:top-7 top-5 rounded-md px-5 w-32 py-4'>
                 <ul>
-                <Link href={"/products?category=tshirts"}><li onClick={() => { setcategory("tshirts"); categoryselect(1);}} className='py-1 text-sm font-bold hover:text-green-700'>Seeds</li></Link>
-                  <Link href={"/products?category=hoodies"}><li onClick={() => { setcategory("hoodies"); categoryselect(2);}} className='py-1 text-sm font-bold hover:text-green-700'>Fertilisers</li></Link>
-                  <Link href={"/products?category=stickers"}><li onClick={() => { setcategory("stickers"); categoryselect(3);}} className='py-1 text-sm font-bold hover:text-green-700'>Tools</li></Link>
+                <Link href={"/products?category=Seeds"}><li onClick={() => { setcategory("Seeds"); categoryselect(1);}} className='py-1 text-sm font-bold hover:text-green-700'>Seeds</li></Link>
+                  <Link href={"/products?category=Fertilisers"}><li onClick={() => { setcategory("Fertilisers"); categoryselect(2);}} className='py-1 text-sm font-bold hover:text-green-700'>Fertilisers</li></Link>
+                  <Link href={"/products?category=Tools"}><li onClick={() => { setcategory("Tools"); categoryselect(3);}} className='py-1 text-sm font-bold hover:text-green-700'>Tools</li></Link>
                 </ul>
               </div>}
               <span   >
@@ -113,8 +97,8 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
             {Object.keys(cart).map((k) => {
               return <li key={k}>
                 <div className="item flex my-5">
-                  <div className='w-2/3 font-semibold'>{cart[k].name}({cart[k].size}/{cart[k].variant})</div>
-                  <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className='cursor-pointer text-green-500' /><span className='mx-2 text-sm'>{cart[k].qty}</span><AiFillPlusCircle onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className='cursor-pointer text-green-500' /></div>
+                  <div className='w-2/3 font-semibold'>{cart[k].name}</div>
+                  <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name) }} className='cursor-pointer text-green-500' /><span className='mx-2 text-sm'>{cart[k].qty}</span><AiFillPlusCircle onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name)}} className='cursor-pointer text-green-500' /></div>
                 </div>
               </li>
             })}
