@@ -15,8 +15,8 @@ export default function Home() {
         <section className="text-gray-600 body-font ">
           
             <div className="flex bg-back bg-no-repeat bg-cover bg-center bg-fixed h-[65vh] opacity-90 text-center items-center justify-center flex-col">
-              <div className='text-6xl text-green-900 font-semibold font-serif'>AGRO SOLUTIONS</div>
-              <div className='text-4xl mb-28 text-green-700 font-semibold font-serif'>Adding Green To Life</div>
+              <div className='md:text-6xl text-3xl text-green-900 font-semibold font-serif '>AGRO SOLUTIONS</div>
+              <div className='md:text-4xl text-2xl mb-28 text-green-700 font-semibold font-serif'>Adding Green To Life</div>
               </div>
         </section>
         

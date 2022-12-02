@@ -48,7 +48,7 @@ const MyOrder = ({clearCart,order}) => {
         <button className="flex  text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">Track Order</button>
 
       </div>
-      <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="/order.jpg"/>
+      <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded p-8" src="/bg2.jpg"/>
     </div>
   </div>
 </section>
