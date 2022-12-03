@@ -3,7 +3,6 @@ import { TbPlant2 } from 'react-icons/Tb';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import { Link } from '@mui/material';
 
-
 const learn = () => {
   return (
     <div>

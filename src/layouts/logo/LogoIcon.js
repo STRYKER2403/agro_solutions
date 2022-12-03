@@ -6,7 +6,7 @@ import LogoDark from "../../../assets/images/logos/logo-dark.svg";
 const LogoIcon = () => {
   return (
     <Link href="/">
-      Codeswear Admin
+      AgroSolutions Admin
     </Link>
   );
 };
