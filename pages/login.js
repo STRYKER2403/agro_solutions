@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Login = () => {
+const Login = ({setuser}) => {
 
   useEffect(() => {
     
@@ -12,8 +12,13 @@ const Login = () => {
      {
       router.push("/")
      }
+     else
+     {
+        setuser({value:null})
+     }
     
   }, []);
+  
 
   const router = useRouter();
   const [credentials, setcredentials] = useState({ email: "", password: "" });

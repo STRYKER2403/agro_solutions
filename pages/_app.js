@@ -130,7 +130,7 @@ function MyApp({ Component, pageProps }) {
       />
       
     {key && <Navbar categoryselect={categoryselect} key={key} logout={logout} user={user} cart={cart} addToCart = {addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} />}
-    <Component category={category} buyNow={buyNow} cart={cart} addToCart = {addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} {...pageProps} />
+    <Component category={category} buyNow={buyNow} cart={cart} setuser={setuser} addToCart = {addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} {...pageProps} />
     <Footer />
   </>
 }

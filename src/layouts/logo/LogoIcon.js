@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "@mui/material";
+import  Link  from "next/link";
 import Image from "next/image";
-import LogoDark from "../../../assets/images/logos/logo-dark.svg";
 
 const LogoIcon = () => {
   return (
-    <Link href="/">
-      AgroSolutions Admin
+    <Link href={"/"}> 
+      <a><Image src='/logo1.png' alt='lg' width={175} height={55} /></a>
     </Link>
   );
 };

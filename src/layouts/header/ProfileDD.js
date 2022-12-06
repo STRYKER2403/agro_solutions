@@ -1,12 +1,11 @@
 import React from "react";
 import FeatherIcon from "feather-icons-react";
-import Image from "next/image";
-import userimg from "../../../assets/images/users/user2.jpg";
+import { useRouter } from 'next/router';
+import Link from "next/link";
 import {
   Box,
   Menu,
   Typography,
-  Link,
   ListItemButton,
   List,
   ListItemText,
@@ -15,6 +14,7 @@ import {
 } from "@mui/material";
 const ProfileDD = () => {
   const [anchorEl4, setAnchorEl4] = React.useState(null);
+  const router = useRouter()
 
   const handleClick4 = (event) => {
     setAnchorEl4(event.currentTarget);
@@ -23,6 +23,11 @@ const ProfileDD = () => {
   const handleClose4 = () => {
     setAnchorEl4(null);
   };
+
+  const logout = () =>{
+    localStorage.removeItem("myuser")
+    router.push('/login')
+  }
   return (
     <>
       <Button
@@ -33,13 +38,7 @@ const ProfileDD = () => {
         onClick={handleClick4}
       >
         <Box display="flex" alignItems="center">
-          <Image
-            src={userimg}
-            alt={userimg}
-            width="30"
-            height="30"
-            className="roundedCircle"
-          />
+          
           <Box
             sx={{
               display: {
@@ -64,7 +63,7 @@ const ProfileDD = () => {
                 ml: 1,
               }}
             >
-              Julia
+              SWAPNIL
             </Typography>
             <FeatherIcon icon="chevron-down" width="20" height="20" />
           </Box>
@@ -90,23 +89,14 @@ const ProfileDD = () => {
               onClick={handleClose4}
             >
               <ListItemButton>
-                <ListItemText primary="Edit Profile" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="Account" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="Change Password" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="My Settings" />
-              </ListItemButton>
+                <Link href={"/myaccount"}><ListItemText primary="My Account" /></Link>
+              </ListItemButton> 
             </List>
           </Box>
           <Divider />
           <Box p={2}>
-            <Link to="/">
-              <Button fullWidth variant="contained" color="primary">
+            <Link href={"/login"} className="no-underline">
+              <Button fullWidth variant="outlined" color="primary" onClick={logout}>
                 Logout
               </Button>
             </Link>

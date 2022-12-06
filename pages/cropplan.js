@@ -2,7 +2,7 @@ import React from 'react'
 
 const cropplan = () => {
   return (
-    <div>
+    <div className='min-h-screen'>
       
     </div>
   )
