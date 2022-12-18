@@ -9,23 +9,76 @@ import {
   Button,
 } from "@mui/material";
 import BaseCard from "../../src/components/baseCard/BaseCard";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const add = () => {
   const [form, setform] = useState({});
 
-  const submitForm = (e) =>{
-       e.preventDefault();
-       // request to add a product through fetch api post request
-       // react toastify
-       let a = fetch("http://localhost:3000/api/products")
+  const submitForm = async (e) => {
+    e.preventDefault();
+    const {title,slug,description,imgLink,category,price,availableQty} = form
+    
+    const data = [{title,slug,description,imgLink,category,price,availableQty}];
+    
+    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+
+    let res = await a.json();
+    console.log(res)
+
+    if(res.success)
+    {
+      toast.success("Product Added Successfully", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+    else
+    {
+      toast.error(res.error, {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
   }
 
-  const handleChange = (e) =>{
-     setform({...form,[e.target.name]:e.target.value})
+  const handleChange = (e) => {
+    setform({ ...form, [e.target.name]: e.target.value })
   }
 
   return (
     <ThemeProvider theme={theme}>
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+
       <FullLayout>
         <style jsx global>{`
         footer{
@@ -34,23 +87,24 @@ const add = () => {
       `}</style>
         <Grid container spacing={0}>
           <Grid item xs={12} lg={12}>
-            <BaseCard title="Add a Product">
+            <BaseCard title="Add Product">
               <Stack spacing={3}>
 
-                <TextField onChange={handleChange} value = {form.title?form.title:""} name="title" label="Title" variant="outlined" />
-                <TextField onChange={handleChange} value = {form.type?form.type:""} name="type" label="Type" variant="outlined" />
-                <TextField onChange={handleChange} value = {form.size?form.size:""} name="size" label="Size" variant="outlined" />
-                <TextField onChange={handleChange} value = {form.color?form.color:""} name="color" label="Color" variant="outlined" />
-                <TextField onChange={handleChange} value = {form.slug?form.slug:""} name="slug" label="Slug" variant="outlined" />
-
+                <TextField onChange={handleChange} value={form.title ? form.title : ""} name="title" label="Title" variant="outlined" />
+                <TextField onChange={handleChange} value={form.slug ? form.slug : ""} name="slug" label="Slug" variant="outlined" />
                 <TextField
                   onChange={handleChange}
-                  value = {form.description?form.description:""}
+                  value={form.description ? form.description : ""}
                   name="description"
                   label="Description"
                   multiline
                   rows={4}
                 />
+                <TextField onChange={handleChange} value={form.imgLink ? form.imgLink : ""} name="imgLink" label="Image Link" variant="outlined" />
+                <TextField onChange={handleChange} value={form.category ? form.category : ""} name="category" label="Category" variant="outlined" />
+                <TextField onChange={handleChange} value={form.price ? form.price : ""} name="price" label="Price" variant="outlined" />
+                <TextField onChange={handleChange} value={form.availableQty ? form.availableQty : ""} name="availableQty" label="Available Quantity" variant="outlined" />
+
 
               </Stack>
               <br />
@@ -65,5 +119,6 @@ const add = () => {
     </ThemeProvider>
   );
 }
+
 
 export default add

@@ -56,6 +56,7 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
         {dropdown && <div className='absolute right-4 bg-white shadow-lg border md:top-7 top-5 rounded-md px-5 w-32 py-4'>
           <ul>
             <Link href={"/myaccount"}><a><li className='py-1 text-sm font-bold hover:text-green-700'>My Account</li></a></Link>
+            <Link href={"/admin"}><a><li className='py-1 text-sm font-bold hover:text-green-700'>Dashboard</li></a></Link>
             <Link href={"/orders"}><a><li className='py-1 text-sm font-bold hover:text-green-700'>My Orders</li></a></Link>
             <li onClick={logout} className='py-1 text-sm font-bold hover:text-green-700'>Logout</li>
           </ul>
