@@ -1,5 +1,5 @@
 import React from 'react'
-import { TbPlant2 } from 'react-icons/Tb';
+import { TbPlant2 } from 'react-icons/Tb';  
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import  Link  from 'next/link';
 
@@ -17,7 +17,7 @@ const learn = () => {
             <Link href={'/markettrends'}  >
               <div className="p-4 md:w-1/4 sm:w-1/2 w-full no-underline cursor-pointer">
                 <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
-                  <div><EqualizerIcon className='text-6xl text-green-500' /></div>
+                  <div className='ml-0'><EqualizerIcon className='text-6xl text-green-500 mr-0' /></div>
                   <h2 className="title-font font-medium text-3xl text-gray-900">Market Trends</h2>
                   {/* <p className="leading-relaxed">Downloads</p> */}
                 </div>

@@ -3,11 +3,16 @@ from bs4 import BeautifulSoup
 from flask import Flask
 
 url = "https://economictimes.indiatimes.com/topic/agriculture"
+url1 = "https://agmarknet.gov.in/"
 
 r = requests.get(url)
+r1 = requests.get(url1)
+
 htmlContent = r.content
+htmlContent1 = r1.content
 
 soup = BeautifulSoup(htmlContent,"html.parser")
+soup1 = BeautifulSoup(htmlContent1,"html.parser")
 
 # for making api
 app = Flask(__name__)
@@ -75,8 +80,21 @@ for item in range(15,len(NewsLink)):
     else:
         continue    
 
+# Scraping all commodities
+commodities = []
+allcommodity = soup1.find(id="ddlCommodity")
 
-#crop plan
+for i in allcommodity:
+    if(i != '\n'):
+        commodities.append(i.get_text())
+
+
+@app.route("/commodity",methods = ["POST","GET"])
+def commodity():
+    return {
+    "commodities":commodities
+}
+
 
 @app.route("/articles",methods = ["POST","GET"])
 def articles():

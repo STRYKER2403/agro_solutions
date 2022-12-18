@@ -5,6 +5,8 @@ import { AiFillPlusCircle, AiFillMinusCircle, AiFillCloseCircle, AiOutlineShoppi
 import { BsFillBagCheckFill } from 'react-icons/bs';
 import { MdAccountCircle } from 'react-icons/Md';
 import { useRouter } from 'next/router';
+// import Script from 'next/script'
+// import { google } from 'googleapis';
 
 
 const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal,categoryselect }) => {
@@ -19,6 +21,11 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
   useEffect(() => {
 
+    // let addScript = document.createElement('script')
+    // addScript.setAttribute('src',"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit")
+    // document.body.appendChild(addScript)
+    // window.googleTranslateElementInit= googleTranslateElementInit;
+
     Object.keys(cart).length !== 0 && setsidebar(true)
     let exempted = ['/checkout', '/orders', '/orders', '/myaccount']
     if (exempted.includes(router.pathname)) {
@@ -27,6 +34,14 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     
   }, []);
 
+
+  // const googleTranslateElementInit = () =>{
+  //    new window.google.translate.TranslateElement({
+  //           pageLanguage: 'en',
+  //           layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  //   }, 'google_translate_element');
+  // }
+
   const toggleCart = () => {
 
     setsidebar(!sidebar)
@@ -34,6 +49,9 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
   return (
     <>
+
+{/* <div id="google_translate_element" className=''></div> */}
+
       {!sidebar && <span onMouseOver={() => setdropdown(true)} onMouseLeave={() => setdropdown(false)} className='fixed md:right-12 right-10 md:top-5 top-3.5 z-30 cursor-pointer'>
         {dropdown && <div className='absolute right-4 bg-white shadow-lg border md:top-7 top-5 rounded-md px-5 w-32 py-4'>
           <ul>
@@ -64,6 +82,8 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                 <Link href={"/products?category=Seeds"}><li onClick={() => { setcategory("Seeds"); categoryselect(1);}} className='py-1 text-sm font-bold hover:text-green-700'>Seeds</li></Link>
                   <Link href={"/products?category=Fertilisers"}><li onClick={() => { setcategory("Fertilisers"); categoryselect(2);}} className='py-1 text-sm font-bold hover:text-green-700'>Fertilisers</li></Link>
                   <Link href={"/products?category=Tools"}><li onClick={() => { setcategory("Tools"); categoryselect(3);}} className='py-1 text-sm font-bold hover:text-green-700'>Tools</li></Link>
+                  <Link href={"/products?category=Tools"}><li onClick={() => { setcategory("Fruits"); categoryselect(4);}} className='py-1 text-sm font-bold hover:text-green-700'>Fruits</li></Link>
+                  <Link href={"/products?category=Tools"}><li onClick={() => { setcategory("VegeTables"); categoryselect(5);}} className='py-1 text-sm font-bold hover:text-green-700'>Vegetables</li></Link>
                 </ul>
               </div>}
               <span   >

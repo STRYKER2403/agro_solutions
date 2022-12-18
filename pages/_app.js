@@ -4,6 +4,8 @@ import Footer from '../components/footer'
 import Navbar from '../components/navbar'
 import '../styles/globals.css'
 import LoadingBar from 'react-top-loading-bar'
+// import Script from 'next/script'
+
 
 function MyApp({ Component, pageProps }) {
 
@@ -18,19 +20,24 @@ function MyApp({ Component, pageProps }) {
 
   const categoryselect = (num) =>{
     if(num == 1)
-    {
-      
+    {  
       setcategory("Seeds")
     }
     else if(num == 2)
     {
-      
       setcategory("Fertilisers")
     }
-    else
+    else if(num == 3)
     {
-      
       setcategory("Tools")
+    }
+    else if(num == 4)
+    { 
+      setcategory("Fruits")
+    }
+    else if(num == 5)
+    {
+      setcategory("Vegetables")
     }
   }
 
@@ -68,7 +75,6 @@ function MyApp({ Component, pageProps }) {
   const saveCart = (myCart) => {
     localStorage.setItem("cart", JSON.stringify(myCart))
     let subt=0;
-    // Object.keys() method changes cart into iterable array
     let keys = Object.keys(myCart)
 
       for(let i=0; i<keys.length ;i++){
@@ -122,6 +128,8 @@ function MyApp({ Component, pageProps }) {
  }
 
   return <>
+    
+
     <LoadingBar
         color='#17912B'
         progress={progress}

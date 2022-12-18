@@ -187,7 +187,7 @@ const Checkout = ({ cart, clearCart, addToCart, removeFromCart, subTotal }) => {
       />
 
       <Head>
-        <title>Checkout - Codeswear.com</title>
+        <title>Checkout - Agrosolutions.com</title>
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
       </Head>
 
