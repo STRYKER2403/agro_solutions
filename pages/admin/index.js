@@ -5,9 +5,22 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../src/theme/theme";
 import AllProducts from "../../src/components/dashboard/AllProducts";
 import Product from '../../models/Product';
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 const mongoose = require("mongoose");
 
 export default function Index({products}) {
+
+  const router = useRouter();
+
+  useEffect(() => {
+    
+    if (JSON.parse(localStorage.getItem("myuser")).type == "Buyer") {
+      router.push("/")
+    }
+
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
 

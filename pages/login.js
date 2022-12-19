@@ -37,10 +37,10 @@ const Login = ({setuser}) => {
 
     let response = await res.json();
 
-    setcredentials({ name: "", email: "", password: "" });
+    setcredentials({email: "", password: "" });
 
     if (response.success) {
-      localStorage.setItem("myuser",JSON.stringify({token: response.token, email: response.email}))
+      localStorage.setItem("myuser",JSON.stringify({token: response.token, email: response.email, type: response.type}))
 
       toast.success('You are successfully logged in!', {
         position: "top-left",

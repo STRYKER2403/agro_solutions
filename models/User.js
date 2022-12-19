@@ -30,8 +30,12 @@ const UserSchema = new mongoose.Schema({
     pincode: {
         type:String,
         default:""
+    },
+    type: {
+        type:String,
+        required:true,
+        default:""
     }
-    
   },{timestamps:true});
 
 // mongoose.model = {}

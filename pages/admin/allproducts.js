@@ -6,9 +6,21 @@ import { Grid } from "@mui/material";
 import Product from '../../models/Product';
 const mongoose = require("mongoose");
 import AllProducts from '../../src/components/dashboard/AllProducts';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const allproducts = ({products}) => {
   
+  const router = useRouter();
+
+  useEffect(() => {
+    
+    if (JSON.parse(localStorage.getItem("myuser")).type == "Buyer") {
+      router.push("/")
+    }
+
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
     <FullLayout>

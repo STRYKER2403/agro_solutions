@@ -5,8 +5,6 @@ import { AiFillPlusCircle, AiFillMinusCircle, AiFillCloseCircle, AiOutlineShoppi
 import { BsFillBagCheckFill } from 'react-icons/bs';
 import { MdAccountCircle } from 'react-icons/Md';
 import { useRouter } from 'next/router';
-// import Script from 'next/script'
-// import { google } from 'googleapis';
 
 
 const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal,categoryselect }) => {
@@ -15,16 +13,16 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
   const [dropdown1, setdropdown1] = useState(false);
   const [sidebar, setsidebar] = useState(false);
   const [category, setcategory] = useState(""); 
+  const [usertype, setusertype] = useState("");
   
   const ref = useRef();
   const router = useRouter()
 
   useEffect(() => {
-
-    // let addScript = document.createElement('script')
-    // addScript.setAttribute('src',"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit")
-    // document.body.appendChild(addScript)
-    // window.googleTranslateElementInit= googleTranslateElementInit;
+    if(localStorage.getItem("myuser"))
+    {
+      setusertype(JSON.parse(localStorage.getItem("myuser")).type)
+    }
 
     Object.keys(cart).length !== 0 && setsidebar(true)
     let exempted = ['/checkout', '/orders', '/orders', '/myaccount']
@@ -34,29 +32,18 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     
   }, []);
 
-
-  // const googleTranslateElementInit = () =>{
-  //    new window.google.translate.TranslateElement({
-  //           pageLanguage: 'en',
-  //           layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  //   }, 'google_translate_element');
-  // }
-
   const toggleCart = () => {
-
     setsidebar(!sidebar)
   }
 
   return (
     <>
 
-{/* <div id="google_translate_element" className=''></div> */}
-
       {!sidebar && <span onMouseOver={() => setdropdown(true)} onMouseLeave={() => setdropdown(false)} className='fixed md:right-12 right-10 md:top-5 top-3.5 z-30 cursor-pointer'>
         {dropdown && <div className='absolute right-4 bg-white shadow-lg border md:top-7 top-5 rounded-md px-5 w-32 py-4'>
           <ul>
             <Link href={"/myaccount"}><a><li className='py-1 text-sm font-bold hover:text-green-700'>My Account</li></a></Link>
-            <Link href={"/admin"}><a><li className='py-1 text-sm font-bold hover:text-green-700'>Dashboard</li></a></Link>
+            {usertype == "Merchant" && <Link href={"/admin"}><a><li className='py-1 text-sm font-bold hover:text-green-700'>Dashboard</li></a></Link>}
             <Link href={"/orders"}><a><li className='py-1 text-sm font-bold hover:text-green-700'>My Orders</li></a></Link>
             <li onClick={logout} className='py-1 text-sm font-bold hover:text-green-700'>Logout</li>
           </ul>

@@ -11,9 +11,21 @@ import {
 import BaseCard from "../../src/components/baseCard/BaseCard";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const add = () => {
     const [form, setform] = useState({});
+
+    const router = useRouter();
+
+    useEffect(() => {
+      
+      if (JSON.parse(localStorage.getItem("myuser")).type == "Buyer") {
+        router.push("/")
+      }
+  
+    }, []);
 
     const submitForm = async (e) => {
         e.preventDefault();

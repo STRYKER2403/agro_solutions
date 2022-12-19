@@ -15,6 +15,7 @@
     "@emotion/server": "11.4.0",
     "@emotion/styled": "11.6.0",
     "@mui/icons-material": "^5.10.16",
+    "@mui/joy": "^5.0.0-alpha.58",
     "@mui/lab": "^5.0.0-alpha.108",
     "@mui/material": "^5.10.14",
     "apexcharts": "^3.23.1",

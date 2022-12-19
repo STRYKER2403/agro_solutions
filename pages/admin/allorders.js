@@ -5,9 +5,22 @@ import theme from "../../src/theme/theme";
 import { Grid } from "@mui/material";
 import AllProducts from "../../src/components/dashboard/AllProducts";
 import Product from '../../models/Product';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 const mongoose = require("mongoose");
 
 const allorders = ({products}) => {
+
+  const router = useRouter();
+
+  useEffect(() => {
+    
+    if (JSON.parse(localStorage.getItem("myuser")).type == "Buyer") {
+      router.push("/")
+    }
+
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
     <FullLayout>
