@@ -33,7 +33,7 @@ NewsImages = soup.find_all("img", class_="flt")
 Images1 = []
 
 for link in NewsImages:
-    if(link.get("src") != 'https://img.etimg.com/thumb/width-100,height-75,msid-42031747/etlogo.jpg'):
+    if(link.get("src") != 'https://economictimes.indiatimes.com/thumb/width-100,height-75,msid-42031747/etlogo.jpg'):
         linkText = (link.get("src"))
         Images1.append(linkText)
 
@@ -42,7 +42,7 @@ NewsImages1 = soup.find_all("img")
 Images2 = []
 
 for link in range(0,len(NewsImages1)-8):
-    if(NewsImages1[link].get("data-original") != 'https://img.etimg.com/thumb/width-100,height-75,msid-42031747/etlogo.jpg' and NewsImages1[link].get("data-original") != None):
+    if(NewsImages1[link].get("data-original") != 'https://economictimes.indiatimes.com/thumb/width-100,height-75,msid-42031747/etlogo.jpg' and NewsImages1[link].get("data-original") != None):
         linkText = (NewsImages1[link].get("data-original"))
         Images2.append(linkText)
         

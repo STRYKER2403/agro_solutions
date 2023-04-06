@@ -117,7 +117,7 @@ const Checkout = ({ cart, clearCart, addToCart, removeFromCart, subTotal }) => {
     })
 
     let txnRes = await a.json();
-    // console.log(txnRes)
+    console.log(txnRes)
     if (txnRes.success) {
       
       let txnToken = txnRes.txnToken
