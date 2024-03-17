@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Product from '../models/Product';
 const mongoose = require("mongoose");
+
 import { useRouter } from 'next/router'
 
 const products = ({products,category}) => {

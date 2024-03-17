@@ -26,7 +26,7 @@ const articles = ({articles}) => {
                 <h2 className="text-2xl font-medium text-white title-font mb-4">{articles.titles[index]}</h2>
                 <p className="leading-relaxed text-gray-300 pr-10">{articles.all_desc[index]}</p>
                 <Link href={`${articles.all_links[index]}`}>
-                  <a className="text-green-500 flex flex-row-reverse items-center mt-4 mr-12">
+                  <a target='_blank' className="text-green-500 flex flex-row-reverse items-center mt-4 mr-12">
                   <button className='disabled:bg-green-300 flex mr-2 text-gray-900 bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-600 rounded text-sm font-semibold'>Read More</button>
                   {/* <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14"></path>

@@ -8,7 +8,7 @@ Agro Solutions is build with Next.js as frontend and backend. It uses API's and 
 Users can buy necessary  commodities required for good yield and learn about the process and techniques to have maximum yield. This yield can also be sold when signing up as a merchant. it shows agriculture sector news(web scrapped)  and also can tell rates in mandis of a particular district with a particular commodity.
 
 
-## Demo
+## Demo Video
 
 [Agro Solutions](https://youtu.be/3BvayDWLq-c)
 

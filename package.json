@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "both": "concurrently \"py agro.py\" \"yarn dev\""
+    "both": "concurrently \"py ../Python_Backend/agro.py\" \"yarn dev\""
   },
   "dependencies": {
     "@emotion/cache": "11.6.0",

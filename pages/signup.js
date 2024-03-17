@@ -25,7 +25,7 @@ const Signup = () => {
   const [password, setpassword] = useState("");
   const [type, settype] = useState("Buyer");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { 
     e.preventDefault();
     const data = {name,email,password,type}
 

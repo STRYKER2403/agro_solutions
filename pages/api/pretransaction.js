@@ -8,7 +8,7 @@ const PaytmChecksum = require('paytmchecksum');
 
 const handler = async (req, res) => {
     if (req.method == 'POST') {
-
+        // console.log(req.body)
         // Check if the pincode is serviceable
         if (!Object.keys(pincodes).includes(req.body.pincode)) {
             res.status(200).json({ success: false, "error": "The pincode you have entered is not servicable!", cartClear: false})
