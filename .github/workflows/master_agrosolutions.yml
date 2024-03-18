@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - AgroSolutions
+name: Build and deploy Node.js app to Azure Web App - agrosolutions
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -19,17 +19,17 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '20.x'
 
       - name: npm install, build, and test
         run: |
           npm install
           npm run build --if-present
           npm run test --if-present
-          
+
       - name: Zip artifact for deployment
-        run: Compress-Archive . release.zip
-      
+        run: zip release.zip ./* -r
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
@@ -52,20 +52,20 @@ jobs:
           name: node-app
 
       - name: Unzip artifact for deployment
-        run: unzip release.zip    
+        run: unzip release.zip
       
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8941E0947478415092CFA9665080CD95 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_15E3FF55611649C599C51583644FFA24 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E23BEC5950A844D9A888CCB57147F29D }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_2B1B6E0496A74A95AB4964017F58CC5A }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A161BF62A72B4A6DA2B8CD804CEE9E59 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7D14A0DBD40445A786CA77AC918E4F05 }}
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
         with:
-          app-name: 'AgroSolutions'
+          app-name: 'agrosolutions'
           slot-name: 'Production'
           package: .
           
