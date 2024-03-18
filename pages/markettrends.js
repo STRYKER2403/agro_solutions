@@ -140,7 +140,7 @@ const markettrends = ({ commodity, cropdata }) => {
 
 export async function getServerSideProps(context) {
 
-  let res = await fetch("http://localhost:3001/commodity")
+  let res = await fetch(`${process.env.NEXT_PYTHON_HOST}/commodity`)
 
   let result;
   if (context.query.crop) {

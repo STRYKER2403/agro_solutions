@@ -45,7 +45,7 @@ const articles = ({articles}) => {
 
 export async function getServerSideProps(context) {
 
-  let res = await fetch("http://localhost:3001/articles")
+  let res = await fetch(`${process.env.NEXT_PYTHON_HOST}/articles`)
   let articles = await res.text()
 
   return {
