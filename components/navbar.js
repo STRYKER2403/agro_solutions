@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { AiFillPlusCircle, AiFillMinusCircle, AiFillCloseCircle, AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsFillBagCheckFill } from 'react-icons/bs';
-import { MdAccountCircle } from 'react-icons/Md';
+import { MdAccountCircle } from 'react-icons/md';
 import { useRouter } from 'next/router';
 
 

@@ -2,10 +2,10 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import AgricultureOutlinedIcon from '@mui/icons-material/AgricultureOutlined';
 import FormatLineSpacingOutlinedIcon from '@mui/icons-material/FormatLineSpacingOutlined';
-import { TbSeeding } from 'react-icons/Tb';
-import { GiFarmer } from 'react-icons/Gi';
-import { BiTimeFive } from 'react-icons/Bi';
-import { MdWaterDrop } from 'react-icons/Md';
+import { TbSeeding } from 'react-icons/tb';
+import { GiFarmer } from 'react-icons/gi';
+import { BiTimeFive } from 'react-icons/bi';
+import { MdWaterDrop } from 'react-icons/md';
 
 const fs = require('fs');
 

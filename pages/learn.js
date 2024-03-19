@@ -1,5 +1,5 @@
 import React from 'react'
-import { TbPlant2 } from 'react-icons/Tb';  
+import { TbPlant2 } from 'react-icons/tb';  
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import  Link  from 'next/link';
 

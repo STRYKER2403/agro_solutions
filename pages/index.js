@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { TbPlant2 } from 'react-icons/Tb';
+import { TbPlant2 } from 'react-icons/tb';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 
 import EqualizerIcon from '@mui/icons-material/Equalizer';
