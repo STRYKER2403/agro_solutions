@@ -100,7 +100,7 @@ const Signup = () => {
             </p>
           </div>
 
-          <FormControl  className='text-center md:ml-32 ml-24' >
+          <FormControl  className='text-center md:pl-8 ml-24' >
             <RadioGroup
               row
               aria-labelledby="demo-type-label"
