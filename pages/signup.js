@@ -13,7 +13,7 @@ const Signup = () => {
   const router = useRouter();
 
   useEffect(() => {
-    
+
     if (localStorage.getItem("myuser")) {
       router.push("/")
     }
@@ -25,9 +25,9 @@ const Signup = () => {
   const [password, setpassword] = useState("");
   const [type, settype] = useState("Buyer");
 
-  const handleSubmit = async (e) => { 
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {name,email,password,type}
+    const data = { name, email, password, type }
 
     let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
       method: 'POST', // or 'PUT'
@@ -100,18 +100,20 @@ const Signup = () => {
             </p>
           </div>
 
-          <FormControl  className='text-center md:pl-8 ml-24' >
-            <RadioGroup
-              row
-              aria-labelledby="demo-type-label"
-              defaultValue="Buyer"
-              onChange={handleChange}
-              name="type"  
-            >
-              <FormControlLabel value="Buyer" control={<Radio color='success'/>} label="Buyer" />
-              <FormControlLabel value="Merchant" control={<Radio color='success'/>} label="Merchant" />
-            </RadioGroup>
-          </FormControl>
+          <div className='md:ml-32 ml-24'>
+            <FormControl className='text-center' >
+              <RadioGroup
+                row
+                aria-labelledby="demo-type-label"
+                defaultValue="Buyer"
+                onChange={handleChange}
+                name="type"
+              >
+                <FormControlLabel value="Buyer" control={<Radio color='success' />} label="Buyer" />
+                <FormControlLabel value="Merchant" control={<Radio color='success' />} label="Merchant" />
+              </RadioGroup>
+            </FormControl>
+          </div>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-6" method="POST">
             <input type="hidden" name="remember" value="true" />
