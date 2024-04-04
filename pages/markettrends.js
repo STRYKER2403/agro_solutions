@@ -99,14 +99,14 @@ const markettrends = ({ commodity, cropdata }) => {
       </div>
 
       <table className="table-auto mr-8 ml-4 mb-5 md:mx-8 mt-8 md:w-[88rem] overflow-hidden border-b rounded-md">
-        {crop && <thead className="border-b bg-gray-50 dark:bg-gray-700">
+        {(crop && crop != "--Select--") && <thead className="border-b bg-gray-50 dark:bg-gray-700">
           <tr className="border-b hover:bg-gray-100">
             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Market</th>
             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Min Price</th>
             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Modal Price</th>
           </tr>
         </thead>}
-        {!crop && <thead className="border-b bg-gray-50 dark:bg-gray-700">
+        {(!crop || crop == "--Select--") && <thead className="border-b bg-gray-50 dark:bg-gray-700">
           <tr className="border-b hover:bg-gray-100">
             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Market</th>
             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Commodity</th>
@@ -143,7 +143,7 @@ export async function getServerSideProps(context) {
   let res = await fetch(`${process.env.NEXT_PYTHON_HOST}/commodity`)
 
   let result;
-  if (context.query.crop) {
+  if (context.query.crop && context.query.crop != "--Select--") {
     result = await fetch(`https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=${process.env.DATA_GOV_API_KEY}&format=json&limit=all&filters[state]=${context.query.state}&filters[district]=${context.query.district}&filters[commodity]=${context.query.crop}`)
   }
   else {

@@ -14,8 +14,12 @@ export default function Index({products}) {
   const router = useRouter();
 
   useEffect(() => {
-    
-    if (JSON.parse(localStorage.getItem("myuser")).type == "Buyer") {
+    const myuser = JSON.parse(localStorage.getItem("myuser"))
+    if(!myuser)
+    {
+      router.push("/")
+    }
+    else if (JSON.parse(localStorage.getItem("myuser")).type == "Buyer") {
       router.push("/")
     }
 
