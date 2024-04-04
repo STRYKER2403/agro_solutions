@@ -114,7 +114,7 @@ const markettrends = ({ commodity, cropdata }) => {
           </tr>
         </thead>}
         <tbody>
-          {!crop && cropdata.records.map((item, index) => {
+          {(!crop || crop == "--Select--") && cropdata.records.map((item, index) => {
             return <tr key={index} className="border-b hover:bg-gray-100">
               <td className="text-sm text-gray-900 font-semibold px-6 py-4">{item.market}</td>
               <td className="text-sm text-gray-900 font-semibold px-6 py-4">{item.commodity}</td>
@@ -122,7 +122,7 @@ const markettrends = ({ commodity, cropdata }) => {
             </tr>
           })}
 
-          {crop && cropdata.records.map((item, index) => {
+          {(crop && crop != "--Select--") && cropdata.records.map((item, index) => {
             return <tr key={index} className="border-b hover:bg-gray-100">
               <td className="text-sm text-gray-900 font-semibold px-6 py-4">{item.market}</td>
               <td className="text-sm text-gray-900 font-semibold px-6 py-4">{item.min_price}</td>
