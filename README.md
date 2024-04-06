@@ -1,5 +1,5 @@
 
-# Agro Solutions
+# [Agro Solutions](agrosolutions.me)
 
 A platform to help farmers buy necessary commodities  for their yield and and sell it at MSP. Aware them about market prices and agriculture sector news.
 
@@ -11,7 +11,6 @@ Users can buy necessary  commodities required for good yield and learn about the
 ## Demo Video
 
 [Agro Solutions](https://youtu.be/3BvayDWLq-c)
-
 
 ## Installation
 
@@ -26,11 +25,22 @@ Install necessary dependencies:
 ```bash
   yarn add dependencies or yarn install
 ```
+
+Clone Agro_python_backend:
+
+```bash
+  git clone https://github.com/STRYKER2403/Agro_python_backend.git
+  cd Agro_python_backend
+  pip install -r requirements.txt
+```
+
+
 Create an .env file and add the following variables:
 
 ```bash
   MONGO_URI = mongodb://localhost:27017/agrosolutions
   NEXT_PUBLIC_HOST = http://localhost:3000
+  NEXT_PUBLIC_PYTHON_HOST = http://localhost:3001
   NEXT_PUBLIC_PAYTM_HOST = ********
   NEXT_PUBLIC_PAYTM_MID = ********
   PAYTM_MKEY = ********
