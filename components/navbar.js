@@ -70,8 +70,8 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                 <Link href={"/products?category=Seeds"}><li onClick={() => { setcategory("Seeds"); categoryselect(1);}} className='py-1 text-sm font-bold hover:text-green-700'>Seeds</li></Link>
                   <Link href={"/products?category=Fertilisers"}><li onClick={() => { setcategory("Fertilisers"); categoryselect(2);}} className='py-1 text-sm font-bold hover:text-green-700'>Fertilisers</li></Link>
                   <Link href={"/products?category=Tools"}><li onClick={() => { setcategory("Tools"); categoryselect(3);}} className='py-1 text-sm font-bold hover:text-green-700'>Tools</li></Link>
-                  <Link href={"/products?category=Tools"}><li onClick={() => { setcategory("Fruits"); categoryselect(4);}} className='py-1 text-sm font-bold hover:text-green-700'>Fruits</li></Link>
-                  <Link href={"/products?category=Tools"}><li onClick={() => { setcategory("VegeTables"); categoryselect(5);}} className='py-1 text-sm font-bold hover:text-green-700'>Vegetables</li></Link>
+                  <Link href={"/products?category=Fruits"}><li onClick={() => { setcategory("Fruits"); categoryselect(4);}} className='py-1 text-sm font-bold hover:text-green-700'>Fruits</li></Link>
+                  <Link href={"/products?category=Vegetables"}><li onClick={() => { setcategory("VegeTables"); categoryselect(5);}} className='py-1 text-sm font-bold hover:text-green-700'>Vegetables</li></Link>
                 </ul>
               </div>}
               <span   >
