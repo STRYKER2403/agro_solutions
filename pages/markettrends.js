@@ -144,10 +144,10 @@ export async function getServerSideProps(context) {
 
   let result;
   if (context.query.crop && context.query.crop != "--Select--") {
-    result = await fetch(`https://api.data.gov.in/catalog/6141ea17-a69d-4713-b600-0a43c8fd9a6c?api-key=${process.env.DATA_GOV_API_KEY}&format=json&limit=all&filters[state]=${context.query.state}&filters[district]=${context.query.district}&filters[commodity]=${context.query.crop}`)
+    result = await fetch(`https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=${process.env.DATA_GOV_API_KEY}&format=json&limit=all&filters[state]=${context.query.state}&filters[district]=${context.query.district}&filters[commodity]=${context.query.crop}`)
   }
   else {
-    result = await fetch(`https://api.data.gov.in/catalog/6141ea17-a69d-4713-b600-0a43c8fd9a6c?api-key=${process.env.DATA_GOV_API_KEY}&format=json&limit=all&filters[state]=${context.query.state}&filters[district]=${context.query.district}`)
+    result = await fetch(`https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=${process.env.DATA_GOV_API_KEY}&format=json&limit=all&filters[state]=${context.query.state}&filters[district]=${context.query.district}`)
   }
 
   let commodity = await res.text()
